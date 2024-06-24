@@ -15,20 +15,21 @@
 
 @layer base {
   body {
-    @apply m-0 flex-center min-h-screen min-w-80;
+    @apply m-0 min-h-screen min-w-80 bg-white;
   }
 
   a {
     @apply text-primary-700  hover:underline cursor-pointer;
   }
 
-  button {
-    @apply px-4 py-2 rounded-md font-semibold bg-primary-500 text-white hover:bg-primary-400 transition-colors;
-  }
-
   a,
   button {
     @apply focus-visible-styles hover:cursor-pointer;
+  }
+
+  ul,
+  li {
+    @apply list-none;
   }
 }
 

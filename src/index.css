@@ -16,6 +16,18 @@
 @layer base {
   body {
     @apply m-0 min-h-screen min-w-80 bg-white;
+
+    & *::-webkit-scrollbar-track {
+      @apply rounded-lg bg-white;
+    }
+
+    & *::-webkit-scrollbar {
+      @apply w-1.5 bg-gray-200;
+    }
+
+    & *::-webkit-scrollbar-thumb {
+      @apply rounded-lg bg-gray-400;
+    }
   }
 
   a {

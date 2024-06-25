@@ -58,7 +58,7 @@ const ModalConditional = (props: ModalProps) => {
           role={'dialog'}
           onClick={(e) => e.stopPropagation()}
           className={classNames(
-            'w-full max-w-xl border border-gray-200 bg-white p-4 rounded-lg shadow-lg relative z-50',
+            'w-full max-w-xl max-h-[100svh] border border-gray-200 bg-white p-4 rounded-lg shadow-lg relative z-50',
             className
           )}
         >

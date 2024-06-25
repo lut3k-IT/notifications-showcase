@@ -20,6 +20,7 @@ const Notifications = () => {
           content={'Something that is <b> bold </b>. It is not.'}
           date={'yesterday'}
           notificationType={'newFeature'}
+          isUnread
         />
         <Message
           content={
@@ -27,6 +28,47 @@ const Notifications = () => {
           }
           date={'3 days ago'}
           notificationType={'deleted'}
+          isUnread
+        />
+        <Message
+          content={
+            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
+          }
+          date={'3 days ago'}
+          notificationType={'deleted'}
+          isUnread
+        />
+        <Message
+          content={
+            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
+          }
+          date={'3 days ago'}
+          notificationType={'deleted'}
+          isUnread={false}
+        />
+        <Message
+          content={
+            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
+          }
+          date={'3 days ago'}
+          notificationType={'deleted'}
+          isUnread={false}
+        />
+        <Message
+          content={
+            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
+          }
+          date={'3 days ago'}
+          notificationType={'deleted'}
+          isUnread={false}
+        />
+        <Message
+          content={
+            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
+          }
+          date={'3 days ago'}
+          notificationType={'deleted'}
+          isUnread={false}
         />
       </MessagesContainer>
     </div>

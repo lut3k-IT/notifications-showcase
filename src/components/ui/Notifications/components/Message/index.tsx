@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { NotificationType } from '../../types';
 import UnreadBadge from '../UnreadBadge';
 import Avatar from './components/Avatar';
@@ -6,23 +8,22 @@ interface MessageProps {
   content: string;
   date: string;
   notificationType: NotificationType;
-  isUnread?: boolean;
+  isUnread: boolean;
   onRead?: () => void;
 }
 
 // @todo - clear base notification type
 
 const Message = (props: MessageProps) => {
-  const {
-    content,
-    date,
-    notificationType = 'newFeature',
-    isUnread = true,
-    onRead,
-  } = props;
+  const { content, date, notificationType, isUnread, onRead } = props;
 
   return (
-    <div className={'p-4 w-full flex gap-4 rounded-lg bg-gray-100 relative'}>
+    <div
+      className={classNames('p-4 w-full flex gap-4 rounded-lg relative', {
+        'bg-gray-100': isUnread,
+        'bg-white': !isUnread,
+      })}
+    >
       <Avatar notificationType={notificationType} />
       <div className={'flex flex-col gap-1 pr-10 w-full'}>
         <div className={'line-clamp-2 text-sm'}>{content}</div>

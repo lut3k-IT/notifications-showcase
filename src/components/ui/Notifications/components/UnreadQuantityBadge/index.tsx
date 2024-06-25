@@ -1,4 +1,4 @@
-import { NotificationCount } from '../../../constants/types';
+import { NotificationCount } from '../../types';
 
 interface NotificationBadgeProps {
   count: NotificationCount;

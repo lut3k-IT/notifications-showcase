@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 import Button from '../Button';
 import Modal from '../Modal';
-import NotificationBell from '../NotificationBell';
+import Notifications from '../Notifications';
+import NotificationBell from '../Notifications/components/BellButton';
 
 const NavBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
@@ -13,7 +14,7 @@ const NavBar = () => {
         'w-full h-14 flex bg-white justify-between px-page border-b items-center'
       }
     >
-      <nav className={'flex h-full [&>*]:h-full [&>*]:rounded-none'}>
+      <nav className={'flex h-full [&>*]:h-full'}>
         <Button variant={'text'}>Nav element</Button>
         <Button variant={'text'}>Nav element</Button>
         <Button variant={'text'}>Nav element</Button>
@@ -24,7 +25,7 @@ const NavBar = () => {
         isOpen={isNotificationModalOpen}
         closeModal={() => setIsNotificationModalOpen(false)}
       >
-        some content
+        <Notifications />
       </Modal>
     </div>
   );

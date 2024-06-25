@@ -50,7 +50,7 @@ const ModalConditional = (props: ModalProps) => {
     <RemoveScroll enabled={isOpen}>
       <div
         className={
-          'top-0 left-0 right-0 bottom-0 fixed bg-white bg-opacity-70 z-40 flex-center'
+          'top-0 left-0 right-0 bottom-0 fixed bg-white bg-opacity-50 z-40 flex-center backdrop-blur-sm'
         }
         onClick={closeModal}
       >
@@ -58,7 +58,7 @@ const ModalConditional = (props: ModalProps) => {
           role={'dialog'}
           onClick={(e) => e.stopPropagation()}
           className={classNames(
-            'w-full max-w-lg border border-gray-200 bg-white p-4 rounded-lg shadow-lg relative',
+            'w-full max-w-xl border border-gray-200 bg-white p-4 rounded-lg shadow-lg relative z-50',
             className
           )}
         >
@@ -67,7 +67,7 @@ const ModalConditional = (props: ModalProps) => {
             className={'top-4 right-4 absolute'}
           />
           {title && (
-            <p className={'text-xl font-semibold mb-4 mr-6'}>{title}</p>
+            <div className={'text-xl font-semibold mb-8 mr-6'}>{title}</div>
           )}
           <div>{children}</div>
         </div>

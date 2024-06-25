@@ -1,20 +1,26 @@
 import classNames from 'classnames';
 
-import { ButtonVariant } from '../../../constants/types';
+import { ButtonVariant, CommonSize } from '../../../constants/types';
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  buttonClassNames?: string;
   variant?: ButtonVariant;
+  size?: CommonSize;
 }
 
 const Button = (props: ButtonProps) => {
-  const { children, variant = 'default', buttonClassNames, ...rest } = props;
+  const {
+    children,
+    variant = 'default',
+    size = 'md',
+    className,
+    ...rest
+  } = props;
 
   return (
     <button
       className={classNames(
-        'h-min px-4 py-2 rounded-md font-semibold transition-colors',
+        'h-min rounded-md font-semibold transition-colors line-clamp-1',
         {
           'bg-primary-500 text-white hover:bg-primary-400':
             variant === 'primary',
@@ -23,8 +29,7 @@ const Button = (props: ButtonProps) => {
             variant === 'success',
           'bg-secondary-500 text-white hover:bg-secondary-400':
             variant === 'secondary',
-
-          'bg-white outline hover:bg-gray-400': variant === 'outline',
+          'bg-white border hover:bg-gray-200': variant === 'outline',
           'bg-transparent text-black': variant === 'ghost',
           'bg-transparent text-primary-500 hover:underline': variant === 'link',
           'bg-transparent text-black hover:text-primary-500':
@@ -32,7 +37,12 @@ const Button = (props: ButtonProps) => {
           '!w-12 !h-12 !p-0 text-gray-500 flex-center': variant === 'icon',
           '!w-8 !h-8 !p-0 text-gray-500 flex-center': variant === 'icon-sm',
         },
-        buttonClassNames
+        {
+          'px-3 py-1': size === 'sm',
+          'px-4 py-2': size === 'md',
+          'px-6 py-3': size === 'lg',
+        },
+        className
       )}
       {...rest}
     >

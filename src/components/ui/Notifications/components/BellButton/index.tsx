@@ -1,8 +1,8 @@
 import { Bell } from 'lucide-react';
 
-import { NotificationCount } from '../../../constants/types';
-import Button from '../Button';
-import NotificationBadge from '../NotificationBadge';
+import Button from '../../../Button';
+import { NotificationCount } from '../../types';
+import NotificationBadge from '../UnreadQuantityBadge';
 
 interface NotificationBellProps
   extends React.HTMLAttributes<HTMLButtonElement> {
@@ -13,8 +13,8 @@ const NotificationBell = (props: NotificationBellProps) => {
   const { count, ...rest } = props;
 
   return (
-    <Button variant={'icon'} buttonClassNames={'relative'} {...rest}>
-      <Bell className={'text-gray-400'} />
+    <Button variant={'icon'} className={'relative'} {...rest}>
+      <Bell className={'text-gray-500'} />
       {count && <NotificationBadge count={count} />}
     </Button>
   );

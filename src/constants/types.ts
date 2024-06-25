@@ -11,4 +11,4 @@ export type ButtonVariant =
   | 'icon'
   | 'icon-sm';
 
-export type NotificationCount = number;
+export type CommonSize = 'sm' | 'md' | 'lg';

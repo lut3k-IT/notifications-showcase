@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: colors.indigo,
-        secondary: colors.blue,
+        primary: colors.blue,
+        secondary: colors.indigo,
         gray: colors.gray,
         success: colors.green,
         danger: colors.red,

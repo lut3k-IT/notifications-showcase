@@ -9,7 +9,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = (props: ButtonProps) => {
-  const { children, variant = 'default', buttonClassNames } = props;
+  const { children, variant = 'default', buttonClassNames, ...rest } = props;
 
   return (
     <button
@@ -29,10 +29,12 @@ const Button = (props: ButtonProps) => {
           'bg-transparent text-primary-500 hover:underline': variant === 'link',
           'bg-transparent text-black hover:text-primary-500':
             variant === 'text',
-          'px-2 py-2 text-gray-500': variant === 'icon',
+          '!w-12 !h-12 !p-0 text-gray-500 flex-center': variant === 'icon',
+          '!w-8 !h-8 !p-0 text-gray-500 flex-center': variant === 'icon-sm',
         },
         buttonClassNames
       )}
+      {...rest}
     >
       {children}
     </button>

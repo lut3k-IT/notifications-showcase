@@ -8,6 +8,7 @@ export type ButtonVariant =
   | 'outline'
   | 'link'
   | 'text'
-  | 'icon';
+  | 'icon'
+  | 'icon-sm';
 
 export type NotificationCount = number;

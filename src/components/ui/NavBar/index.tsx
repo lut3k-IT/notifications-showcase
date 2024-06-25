@@ -1,7 +1,12 @@
+import { useState } from 'react';
+
 import Button from '../Button';
+import Modal from '../Modal';
 import NotificationBell from '../NotificationBell';
 
 const NavBar = () => {
+  const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
+
   return (
     <div
       className={
@@ -13,7 +18,14 @@ const NavBar = () => {
         <Button variant={'text'}>Nav element</Button>
         <Button variant={'text'}>Nav element</Button>
       </nav>
-      <NotificationBell />
+      <NotificationBell onClick={() => setIsNotificationModalOpen(true)} />
+      <Modal
+        title={'Modal Title'}
+        isOpen={isNotificationModalOpen}
+        closeModal={() => setIsNotificationModalOpen(false)}
+      >
+        some content
+      </Modal>
     </div>
   );
 };

@@ -19,8 +19,8 @@ const NavBar = () => {
         <Button type={'navLink'} variant={'text'} to={RoutePath.HOME}>
           {RouteName.HOME}
         </Button>
-        <Button type={'navLink'} variant={'text'} to={RoutePath.NOTIFICATION}>
-          {RouteName.NOTIFICATION}
+        <Button type={'navLink'} variant={'text'} to={RoutePath.CREATOR}>
+          {RouteName.CREATOR}
         </Button>
       </nav>
       <NotificationBell onClick={() => setIsNotificationModalOpen(true)} />

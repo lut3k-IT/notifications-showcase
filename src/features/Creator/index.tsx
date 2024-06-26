@@ -6,10 +6,7 @@ import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import { NotificationName } from '../../components/ui/Notifications/enums';
 import { addNotification } from '../../components/ui/Notifications/notificationsSlice';
-import {
-  Notification,
-  NotificationType,
-} from '../../components/ui/Notifications/types';
+import { Notification, NotificationType } from '../../components/ui/Notifications/types';
 
 const Creator = () => {
   const [message, setMessage] = useState('');
@@ -24,7 +21,7 @@ const Creator = () => {
       message,
       type,
       timestamp: new Date(),
-      status: 'unread',
+      status: 'unread'
     };
 
     dispatch(addNotification(notification));
@@ -34,7 +31,7 @@ const Creator = () => {
     <div className={'flex flex-col gap-4'}>
       <h2>Create notification</h2>
       <form
-        className={'w-80 flex flex-col gap-2 p-4 rounded-lg border'}
+        className={'flex w-80 flex-col gap-2 rounded-lg border p-4'}
         onSubmit={(e) => handleAddNotification(e)}
       >
         <label>
@@ -53,9 +50,7 @@ const Creator = () => {
             onChange={(e) => setType(e.target.value as NotificationType)}
           >
             <option value='request'>{NotificationName.REQUEST}</option>
-            <option value='statusChange'>
-              {NotificationName.STATUS_CHANGE}
-            </option>
+            <option value='statusChange'>{NotificationName.STATUS_CHANGE}</option>
             <option value='newFeature'>{NotificationName.NEW_FEATURE}</option>
             <option value='deleted'>{NotificationName.DELETED}</option>
           </select>

@@ -1,10 +1,6 @@
 export type NotificationCount = number;
 
-export type NotificationType =
-  | 'request'
-  | 'statusChange'
-  | 'newFeature'
-  | 'deleted';
+export type NotificationType = 'request' | 'statusChange' | 'newFeature' | 'deleted';
 
 export type NotificationStatus = 'read' | 'unread';
 

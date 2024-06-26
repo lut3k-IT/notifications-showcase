@@ -14,22 +14,22 @@ export const router = createBrowserRouter([
     children: [
       {
         path: RoutePath.HOME,
-        element: <Home />,
+        element: <Home />
       },
       {
         path: RoutePath.CREATOR,
-        element: <Creator />,
+        element: <Creator />
       },
       {
         path: RoutePath.NOTIFICATION + '/:id',
-        element: <Notification />,
+        element: <Notification />
       },
       {
         path: '*',
-        element: <NotFoundRoute />,
-      },
-    ],
-  },
+        element: <NotFoundRoute />
+      }
+    ]
+  }
 ]);
 
 const AppRouter = () => {

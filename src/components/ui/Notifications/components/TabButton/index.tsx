@@ -17,7 +17,7 @@ const TabButton = (props: TabButtonProps) => {
       size={'sm'}
       className={classNames('!rounded-full', {
         'border-primary-500 text-primary-500 hover:bg-primary-100': isActive,
-        'border-gray-200 text-gray-500': !isActive,
+        'border-gray-200 text-gray-500': !isActive
       })}
       onClick={onClick}
     >

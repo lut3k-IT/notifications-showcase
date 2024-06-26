@@ -20,14 +20,7 @@ const Modal = (props: ModalProps) => {
 };
 
 const ModalConditional = (props: ModalProps) => {
-  const {
-    title,
-    className,
-    isOpen,
-    closeModal,
-    children,
-    disableOutsideClick,
-  } = props;
+  const { title, className, isOpen, closeModal, children, disableOutsideClick } = props;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -49,26 +42,22 @@ const ModalConditional = (props: ModalProps) => {
   return createPortal(
     <RemoveScroll enabled={isOpen}>
       <div
-        className={
-          'top-0 left-0 right-0 bottom-0 fixed bg-white bg-opacity-50 z-40 flex-center backdrop-blur-sm'
-        }
+        className={'flex-center fixed bottom-0 left-0 right-0 top-0 z-40 bg-white bg-opacity-50 backdrop-blur-sm'}
         onClick={closeModal}
       >
         <div
           role={'dialog'}
           onClick={(e) => e.stopPropagation()}
           className={classNames(
-            'w-full max-w-xl max-h-[100svh] border border-gray-200 bg-white p-4 rounded-lg shadow-lg relative z-50',
+            'relative z-50 max-h-[100svh] w-full max-w-xl rounded-lg border border-gray-200 bg-white p-4 shadow-lg',
             className
           )}
         >
           <CloseButton
             onClick={closeModal}
-            className={'top-4 right-4 absolute'}
+            className={'absolute right-4 top-4'}
           />
-          {title && (
-            <div className={'text-xl font-semibold mb-8 mr-6'}>{title}</div>
-          )}
+          {title && <div className={'mb-8 mr-6 text-xl font-semibold'}>{title}</div>}
           <div>{children}</div>
         </div>
       </div>

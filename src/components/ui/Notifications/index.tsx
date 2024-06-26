@@ -6,14 +6,23 @@ import TabButton from './components/TabButton';
 const Notifications = () => {
   return (
     <div className={'flex flex-col gap-6'}>
-      <div className={'flex gap-2 flex-wrap'}>
-        <TabButton isActive={true} onClick={() => ''}>
+      <div className={'flex flex-wrap gap-2'}>
+        <TabButton
+          isActive={true}
+          onClick={() => ''}
+        >
           All Notifications
         </TabButton>
-        <TabButton isActive={false} onClick={() => ''}>
+        <TabButton
+          isActive={false}
+          onClick={() => ''}
+        >
           Unread Notifications
         </TabButton>
-        <AllReadButton hasUnread={true} onClick={() => ''} />
+        <AllReadButton
+          hasUnread={true}
+          onClick={() => ''}
+        />
       </div>
       <MessagesContainer>
         <Message

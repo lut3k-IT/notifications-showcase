@@ -64,10 +64,10 @@
 
 @layer utilities {
   .flex-center {
-    @apply flex justify-center items-center;
+    @apply flex items-center justify-center;
   }
 
   .focus-visible-styles {
-    @apply focus-visible:outline-none focus-visible:ring-primary-500 focus-visible:ring-2 focus-visible:ring-offset-2;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
   }
 }

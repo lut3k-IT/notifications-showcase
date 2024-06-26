@@ -9,8 +9,12 @@ const UnreadBadge = (props: UnreadBadgeProps) => {
   const { className, onClick } = props;
 
   return (
-    <Button variant={'icon-sm'} className={className} onClick={onClick}>
-      <div className={'w-3 h-3 bg-primary-500 rounded-full'} />
+    <Button
+      variant={'icon-sm'}
+      className={className}
+      onClick={onClick}
+    >
+      <div className={'h-3 w-3 rounded-full bg-primary-500'} />
     </Button>
   );
 };

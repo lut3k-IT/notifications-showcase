@@ -13,21 +13,11 @@ const Avatar = (props: AvatarProps) => {
 
   return (
     <>
-      {notificationType === 'request' && (
-        <div
-          className={classNames(style, 'from-violet-700 to-violet-500')}
-        ></div>
-      )}
-      {notificationType === 'newFeature' && (
-        <div className={classNames(style, 'from-pink-700 to-pink-500')}></div>
-      )}
-      {notificationType === 'deleted' && (
-        <div className={classNames(style, 'from-red-700 to-red-500')}></div>
-      )}
+      {notificationType === 'request' && <div className={classNames(style, 'from-violet-700 to-violet-500')}></div>}
+      {notificationType === 'newFeature' && <div className={classNames(style, 'from-pink-700 to-pink-500')}></div>}
+      {notificationType === 'deleted' && <div className={classNames(style, 'from-red-700 to-red-500')}></div>}
       {notificationType === 'statusChange' && (
-        <div
-          className={classNames(style, 'from-yellow-700 to-yellow-500')}
-        ></div>
+        <div className={classNames(style, 'from-yellow-700 to-yellow-500')}></div>
       )}
     </>
   );

@@ -9,9 +9,7 @@ const NotificationBadge = (props: NotificationBadgeProps) => {
 
   return (
     <div
-      className={
-        'absolute top-1 right-1 w-min h-4 min-w-4 bg-danger-500 rounded-full text-xs text-white flex-center'
-      }
+      className={'flex-center absolute right-1 top-1 h-4 w-min min-w-4 rounded-full bg-danger-500 text-xs text-white'}
     >
       {count}
     </div>

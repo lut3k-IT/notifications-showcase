@@ -4,8 +4,8 @@ import notificationsSlice from '../components/ui/Notifications/notificationsSlic
 
 export const store = configureStore({
   reducer: {
-    notifications: notificationsSlice.reducer,
-  },
+    notifications: notificationsSlice.reducer
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

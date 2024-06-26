@@ -16,9 +16,7 @@ const AllReadButton = (props: AllReadButtonProps) => {
     <Button
       onClick={onClick}
       size={'sm'}
-      className={
-        'flex gap-2 font-semibold text-primary-500 hover:!text-primary-400 '
-      }
+      className={'flex gap-2 font-semibold text-primary-500 hover:!text-primary-400'}
       variant={'text'}
     >
       <CheckCheck />

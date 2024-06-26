@@ -10,16 +10,20 @@ const NavBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
 
   return (
-    <div
-      className={
-        'w-full h-14 flex bg-white justify-between pr-page border-b items-center'
-      }
-    >
+    <div className={'flex h-14 w-full items-center justify-between border-b bg-white pr-page'}>
       <nav className={'flex h-full [&>*]:h-full'}>
-        <Button type={'navLink'} variant={'text'} to={RoutePath.HOME}>
+        <Button
+          type={'navLink'}
+          variant={'text'}
+          to={RoutePath.HOME}
+        >
           {RouteName.HOME}
         </Button>
-        <Button type={'navLink'} variant={'text'} to={RoutePath.CREATOR}>
+        <Button
+          type={'navLink'}
+          variant={'text'}
+          to={RoutePath.CREATOR}
+        >
           {RouteName.CREATOR}
         </Button>
       </nav>

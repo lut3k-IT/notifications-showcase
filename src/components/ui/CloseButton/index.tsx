@@ -14,7 +14,7 @@ const CloseButton = (props: CloseButtonProps) => {
   return (
     <Button
       variant={'icon-sm'}
-      className={classNames('[&:hover>svg]:rotate-90 rounded', className)}
+      className={classNames('rounded [&:hover>svg]:rotate-90', className)}
       onClick={onClick}
     >
       <X className={'transition-transform'} />

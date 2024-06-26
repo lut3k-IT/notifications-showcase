@@ -15,12 +15,12 @@ export default {
         gray: colors.gray,
         success: colors.green,
         danger: colors.red,
-        warning: colors.yellow,
+        warning: colors.yellow
       },
       spacing: {
-        ...rem(16, 'page'),
-      },
-    },
+        ...rem(16, 'page')
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

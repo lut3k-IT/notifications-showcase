@@ -1,3 +1,3 @@
 export enum LocalStorageKey {
-  NOTIFICATIONS = 'notifications',
+  NOTIFICATIONS = 'notifications'
 }

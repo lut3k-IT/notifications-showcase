@@ -17,18 +17,21 @@ const Message = (props: MessageProps) => {
 
   return (
     <div
-      className={classNames('p-4 w-full flex gap-4 rounded-lg relative', {
+      className={classNames('relative flex w-full gap-4 rounded-lg p-4', {
         'bg-gray-100': isUnread,
-        'bg-white': !isUnread,
+        'bg-white': !isUnread
       })}
     >
       <Avatar notificationType={notificationType} />
-      <div className={'flex flex-col gap-1 pr-10 w-full'}>
+      <div className={'flex w-full flex-col gap-1 pr-10'}>
         <div className={'line-clamp-2 text-sm'}>{content}</div>
-        <div className={'text-gray-500 text-sm font-semibold'}>{date}</div>
+        <div className={'text-sm font-semibold text-gray-500'}>{date}</div>
       </div>
       {isUnread && (
-        <UnreadBadge className={'absolute top-2 right-2'} onClick={onRead} />
+        <UnreadBadge
+          className={'absolute right-2 top-2'}
+          onClick={onRead}
+        />
       )}
     </div>
   );

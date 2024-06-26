@@ -35,6 +35,11 @@
     @apply focus-visible-styles hover:cursor-pointer;
   }
 
+  input,
+  select {
+    @apply focus-visible-styles;
+  }
+
   ul,
   li {
     @apply list-none;

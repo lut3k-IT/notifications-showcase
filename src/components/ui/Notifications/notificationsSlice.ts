@@ -1,10 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { LocalStorageKey } from '../../../constants/enums';
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-} from './../../../utils/storageHelpers';
+import { getLocalStorageItem, setLocalStorageItem } from './../../../utils/storageHelpers';
 import { Notification } from './types';
 
 function updateLocalStorage(state: Notification[]) {
@@ -28,17 +25,13 @@ const notificationsSlice = createSlice({
   initialState,
   reducers: {
     addNotification: (state, action: { payload: Notification }) => {
-      if (
-        !state.find((notification) => notification.id === action.payload.id)
-      ) {
+      if (!state.find((notification) => notification.id === action.payload.id)) {
         state.push(action.payload);
         updateLocalStorage(state);
       }
     },
-    removeNotification: (state, action: { payload: number }) => {
-      const index = state.findIndex(
-        (notification) => notification.id === action.payload
-      );
+    removeNotification: (state, action: { payload: Notification['id'] }) => {
+      const index = state.findIndex((notification) => notification.id === action.payload);
       if (index !== -1) {
         state.splice(index, 1);
         updateLocalStorage(state);
@@ -48,10 +41,8 @@ const notificationsSlice = createSlice({
       state = [];
       updateLocalStorage(state);
     },
-    markNotificationAsRead: (state, action: { payload: number }) => {
-      const notification = state.find(
-        (notification) => notification.id === action.payload
-      );
+    markNotificationAsRead: (state, action: { payload: Notification['id'] }) => {
+      const notification = state.find((notification) => notification.id === action.payload);
       if (notification) {
         notification.status = 'read';
         updateLocalStorage(state);
@@ -62,15 +53,11 @@ const notificationsSlice = createSlice({
         notification.status = 'read';
       });
       updateLocalStorage(state);
-    },
-  },
+    }
+  }
 });
 
-export const {
-  addNotification,
-  removeNotification,
-  markNotificationAsRead,
-  markAllNotificationsAsRead,
-} = notificationsSlice.actions;
+export const { addNotification, removeNotification, markNotificationAsRead, markAllNotificationsAsRead } =
+  notificationsSlice.actions;
 
 export default notificationsSlice;

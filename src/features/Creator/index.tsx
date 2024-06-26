@@ -1,16 +1,33 @@
 import { useState } from 'react';
+import v4 from 'react-uuid';
 
+import useAppDispatch from '../../components/hooks/useAppDispatch';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import { NotificationName } from '../../components/ui/Notifications/enums';
-import { NotificationType } from '../../components/ui/Notifications/types';
+import { addNotification } from '../../components/ui/Notifications/notificationsSlice';
+import {
+  Notification,
+  NotificationType,
+} from '../../components/ui/Notifications/types';
 
 const Creator = () => {
   const [message, setMessage] = useState('');
   const [type, setType] = useState<NotificationType>('request');
+  const dispatch = useAppDispatch();
 
   const handleAddNotification = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const notification: Notification = {
+      id: v4(),
+      message,
+      type,
+      timestamp: new Date(),
+      status: 'unread',
+    };
+
+    dispatch(addNotification(notification));
   };
 
   return (

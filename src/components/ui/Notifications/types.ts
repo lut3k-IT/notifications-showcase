@@ -9,7 +9,7 @@ export type NotificationType =
 export type NotificationStatus = 'read' | 'unread';
 
 export interface Notification {
-  id: number;
+  id: string;
   type: NotificationType;
   message: string;
   timestamp: Date;

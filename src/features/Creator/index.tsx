@@ -13,6 +13,11 @@ const Creator = () => {
   const [type, setType] = useState<NotificationType>('request');
   const dispatch = useAppDispatch();
 
+  const resetForm = () => {
+    setMessage('');
+    setType('request');
+  };
+
   const handleAddNotification = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -20,11 +25,12 @@ const Creator = () => {
       id: v4(),
       message,
       type,
-      timestamp: new Date(),
+      timestamp: new Date().toISOString(),
       status: 'unread'
     };
 
     dispatch(addNotification(notification));
+    resetForm();
   };
 
   return (

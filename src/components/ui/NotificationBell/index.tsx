@@ -1,8 +1,8 @@
 import { Bell } from 'lucide-react';
 
-import Button from '../../../Button';
-import { NotificationCount } from '../../types';
-import NotificationBadge from '../UnreadQuantityBadge';
+import Button from '../Button';
+import NotificationBadge from '../Notifications/components/UnreadQuantityBadge';
+import { NotificationCount } from '../Notifications/types';
 
 interface NotificationBellProps extends React.HTMLAttributes<HTMLButtonElement> {
   count?: NotificationCount;

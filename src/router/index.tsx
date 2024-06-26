@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AppOverlay from '../components/ui/AppOverlay';
 import Creator from '../features/Creator';
 import Home from '../features/Home';
-import NotFoundRoute from '../features/NotFoundRoute/intex';
+import NotFoundRoute from '../features/NotFoundRoute/index';
 import Notification from '../features/NotificationPage';
 import { RoutePath } from './enums';
 

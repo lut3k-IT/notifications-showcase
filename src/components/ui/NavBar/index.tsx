@@ -1,13 +1,15 @@
 import { useState } from 'react';
 
 import { RouteName, RoutePath } from '../../../router/enums';
+import useAppSelector from '../../hooks/useAppSelector';
 import Button from '../Button';
 import Modal from '../Modal';
+import NotificationBell from '../NotificationBell';
 import Notifications from '../Notifications';
-import NotificationBell from '../Notifications/components/BellButton';
 
 const NavBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
+  const notificationsQuantity = useAppSelector((state) => state.notifications.length);
 
   return (
     <div className={'flex h-14 w-full items-center justify-between border-b bg-white pr-page'}>
@@ -27,7 +29,10 @@ const NavBar = () => {
           {RouteName.CREATOR}
         </Button>
       </nav>
-      <NotificationBell onClick={() => setIsNotificationModalOpen(true)} />
+      <NotificationBell
+        onClick={() => setIsNotificationModalOpen(true)}
+        count={notificationsQuantity}
+      />
       <Modal
         title={'Modal Title'}
         isOpen={isNotificationModalOpen}

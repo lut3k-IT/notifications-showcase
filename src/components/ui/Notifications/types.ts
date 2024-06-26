@@ -8,6 +8,6 @@ export interface Notification {
   id: string;
   type: NotificationType;
   message: string;
-  timestamp: Date;
+  timestamp: string;
   status: NotificationStatus;
 }

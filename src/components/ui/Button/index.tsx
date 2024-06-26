@@ -16,7 +16,7 @@ const Button = (props: ButtonProps) => {
   const { children, type = 'button', variant = 'primary', size = 'md', to, className, ...rest } = props;
 
   const buttonClassName = classNames(
-    'h-min rounded-md font-semibold transition-colors line-clamp-1 flex-center',
+    'h-min rounded-md font-semibold transition-colors line-clamp-1 flex-center w-max',
     {
       'bg-primary-500 text-white hover:bg-primary-400': variant === 'primary',
       'bg-danger-500 text-white hover:bg-danger-400': variant === 'danger',

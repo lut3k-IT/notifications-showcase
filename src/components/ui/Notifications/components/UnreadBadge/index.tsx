@@ -8,11 +8,16 @@ interface UnreadBadgeProps {
 const UnreadBadge = (props: UnreadBadgeProps) => {
   const { className, onClick } = props;
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    onClick && onClick();
+  };
+
   return (
     <Button
       variant={'icon-sm'}
       className={className}
-      onClick={onClick}
+      onClick={(e) => handleClick(e)}
     >
       <div className={'h-3 w-3 rounded-full bg-primary-500'} />
     </Button>

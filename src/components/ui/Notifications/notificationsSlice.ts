@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { LocalStorageKey } from '../../../constants/enums';
 import { getLocalStorageItem, setLocalStorageItem } from './../../../utils/storageHelpers';
@@ -18,19 +18,17 @@ function getInitialState(): Notification[] {
   }
 }
 
-const initialState = getInitialState();
-
 const notificationsSlice = createSlice({
   name: 'notifications',
-  initialState,
+  initialState: getInitialState(),
   reducers: {
-    addNotification: (state, action: { payload: Notification }) => {
+    addNotification: (state, action: PayloadAction<Notification>) => {
       if (!state.find((notification) => notification.id === action.payload.id)) {
         state.push(action.payload);
         updateLocalStorage(state);
       }
     },
-    removeNotification: (state, action: { payload: Notification['id'] }) => {
+    removeNotification: (state, action: PayloadAction<Notification['id']>) => {
       const index = state.findIndex((notification) => notification.id === action.payload);
       if (index !== -1) {
         state.splice(index, 1);
@@ -38,10 +36,10 @@ const notificationsSlice = createSlice({
       }
     },
     removeAllNotifications: (state) => {
-      state = [];
+      state.length = 0;
       updateLocalStorage(state);
     },
-    markNotificationAsRead: (state, action: { payload: Notification['id'] }) => {
+    markNotificationAsRead: (state, action: PayloadAction<Notification['id']>) => {
       const notification = state.find((notification) => notification.id === action.payload);
       if (notification) {
         notification.status = 'read';
@@ -53,11 +51,24 @@ const notificationsSlice = createSlice({
         notification.status = 'read';
       });
       updateLocalStorage(state);
+    },
+    markNotificationAsUnread: (state, action: PayloadAction<Notification['id']>) => {
+      const notification = state.find((notification) => notification.id === action.payload);
+      if (notification) {
+        notification.status = 'unread';
+        updateLocalStorage(state);
+      }
     }
   }
 });
 
-export const { addNotification, removeNotification, markNotificationAsRead, markAllNotificationsAsRead } =
-  notificationsSlice.actions;
+export const {
+  addNotification,
+  removeNotification,
+  removeAllNotifications,
+  markNotificationAsRead,
+  markAllNotificationsAsRead,
+  markNotificationAsUnread
+} = notificationsSlice.actions;
 
 export default notificationsSlice;

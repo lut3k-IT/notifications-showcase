@@ -4,12 +4,15 @@ import { RouteName, RoutePath } from '../../../router/enums';
 import useAppSelector from '../../hooks/useAppSelector';
 import Button from '../Button';
 import Modal from '../Modal';
-import NotificationBell from '../NotificationBell';
 import Notifications from '../Notifications';
+import NotificationBell from '../Notifications/components/NotificationBell';
 
 const NavBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
-  const notificationsQuantity = useAppSelector((state) => state.notifications.length);
+
+  const notifications = useAppSelector((state) => state.notifications);
+  const unreadNotifications = notifications.filter((notification) => notification.status === 'unread');
+  const unreadQuantity = unreadNotifications.length;
 
   return (
     <div className={'flex h-14 w-full items-center justify-between border-b bg-white pr-page'}>
@@ -31,7 +34,7 @@ const NavBar = () => {
       </nav>
       <NotificationBell
         onClick={() => setIsNotificationModalOpen(true)}
-        count={notificationsQuantity}
+        count={unreadQuantity}
       />
       <Modal
         title={'Modal Title'}

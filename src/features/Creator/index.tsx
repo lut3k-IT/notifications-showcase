@@ -5,7 +5,7 @@ import useAppDispatch from '../../components/hooks/useAppDispatch';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import { NotificationName } from '../../components/ui/Notifications/enums';
-import { addNotification } from '../../components/ui/Notifications/notificationsSlice';
+import { addNotification, removeAllNotifications } from '../../components/ui/Notifications/notificationsSlice';
 import { Notification, NotificationType } from '../../components/ui/Notifications/types';
 
 const Creator = () => {
@@ -33,6 +33,10 @@ const Creator = () => {
     resetForm();
   };
 
+  const handleRemoveAllNotifications = () => {
+    dispatch(removeAllNotifications());
+  };
+
   return (
     <div className={'flex flex-col gap-4'}>
       <h2>Create notification</h2>
@@ -54,6 +58,7 @@ const Creator = () => {
           <select
             value={type}
             onChange={(e) => setType(e.target.value as NotificationType)}
+            className={'w-full rounded-md border p-1'}
           >
             <option value='request'>{NotificationName.REQUEST}</option>
             <option value='statusChange'>{NotificationName.STATUS_CHANGE}</option>
@@ -61,8 +66,14 @@ const Creator = () => {
             <option value='deleted'>{NotificationName.DELETED}</option>
           </select>
         </label>
-        <Button className={'mt-4'}>Create</Button>
+        <Button className={'mt-4 !w-full'}>Create</Button>
       </form>
+      <Button
+        onClick={() => handleRemoveAllNotifications()}
+        variant={'danger'}
+      >
+        Delete all notifications
+      </Button>
     </div>
   );
 };

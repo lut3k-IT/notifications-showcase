@@ -1,84 +1,58 @@
+import { useState } from 'react';
+
+import useAppDispatch from '../../hooks/useAppDispatch';
+import useAppSelector from '../../hooks/useAppSelector';
 import AllReadButton from './components/AllReadButton';
 import Message from './components/Message';
 import MessagesContainer from './components/MessagesContainer';
 import TabButton from './components/TabButton';
+import { markAllNotificationsAsRead, markNotificationAsRead } from './notificationsSlice';
+import { Notification, NotificationTab } from './types';
 
 const Notifications = () => {
+  const [tab, setTab] = useState<NotificationTab>('all');
+
+  const dispatch = useAppDispatch();
+  const notifications = useAppSelector((state) => state.notifications);
+  const unreadNotifications = notifications.filter((notification) => notification.status === 'unread');
+  const notificationsToRender = tab === 'all' ? notifications : unreadNotifications;
+
+  const handleMarkNotificationAsRead = (id: Notification['id']) => {
+    dispatch(markNotificationAsRead(id));
+  };
+
+  const handleMarkAllNotificationsAsRead = () => {
+    dispatch(markAllNotificationsAsRead());
+  };
+
   return (
     <div className={'flex flex-col gap-6'}>
       <div className={'flex flex-wrap gap-2'}>
         <TabButton
-          isActive={true}
-          onClick={() => ''}
+          isActive={tab === 'all'}
+          onClick={() => setTab('all')}
         >
           All Notifications
         </TabButton>
         <TabButton
-          isActive={false}
-          onClick={() => ''}
+          isActive={tab === 'unread'}
+          onClick={() => setTab('unread')}
         >
           Unread Notifications
         </TabButton>
         <AllReadButton
-          hasUnread={true}
-          onClick={() => ''}
+          hasUnread={unreadNotifications.length > 0}
+          onClick={() => handleMarkAllNotificationsAsRead()}
         />
       </div>
       <MessagesContainer>
-        <Message
-          content={'Something that is <b> bold </b>. It is not.'}
-          date={'yesterday'}
-          notificationType={'newFeature'}
-          isUnread
-        />
-        <Message
-          content={
-            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
-          }
-          date={'3 days ago'}
-          notificationType={'deleted'}
-          isUnread
-        />
-        <Message
-          content={
-            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
-          }
-          date={'3 days ago'}
-          notificationType={'deleted'}
-          isUnread
-        />
-        <Message
-          content={
-            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
-          }
-          date={'3 days ago'}
-          notificationType={'deleted'}
-          isUnread={false}
-        />
-        <Message
-          content={
-            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
-          }
-          date={'3 days ago'}
-          notificationType={'deleted'}
-          isUnread={false}
-        />
-        <Message
-          content={
-            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
-          }
-          date={'3 days ago'}
-          notificationType={'deleted'}
-          isUnread={false}
-        />
-        <Message
-          content={
-            'Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not. Something that is <b> bold </b>. It is not.'
-          }
-          date={'3 days ago'}
-          notificationType={'deleted'}
-          isUnread={false}
-        />
+        {notificationsToRender.map((notification) => (
+          <Message
+            key={notification.id}
+            notification={notification}
+            onRead={() => handleMarkNotificationAsRead(notification.id)}
+          />
+        ))}
       </MessagesContainer>
     </div>
   );

@@ -4,6 +4,8 @@ export type NotificationType = 'request' | 'statusChange' | 'newFeature' | 'dele
 
 export type NotificationStatus = 'read' | 'unread';
 
+export type NotificationTab = 'all' | 'unread';
+
 export interface Notification {
   id: string;
   type: NotificationType;

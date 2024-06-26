@@ -12,8 +12,6 @@ interface MessageProps {
   onRead?: () => void;
 }
 
-// @todo - clear base notification type
-
 const Message = (props: MessageProps) => {
   const { content, date, notificationType, isUnread, onRead } = props;
 

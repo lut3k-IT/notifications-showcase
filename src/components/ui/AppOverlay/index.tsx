@@ -1,16 +1,14 @@
-interface NavBarProps {
-  children: React.ReactNode;
-}
+import { Outlet } from 'react-router-dom';
 
 import NavBar from '../NavBar';
 
-const AppOverlay = (props: NavBarProps) => {
-  const { children } = props;
-
+const AppOverlay = () => {
   return (
     <>
       <NavBar />
-      {children}
+      <main className={'p-page'}>
+        <Outlet />
+      </main>
     </>
   );
 };

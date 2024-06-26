@@ -10,8 +10,6 @@ interface AllReadButtonProps {
 const AllReadButton = (props: AllReadButtonProps) => {
   const { hasUnread, onClick } = props;
 
-  // @todo - If there are no unread notifications, don't show the button or make it disabled
-
   if (!hasUnread) return null;
 
   return (
@@ -19,8 +17,9 @@ const AllReadButton = (props: AllReadButtonProps) => {
       onClick={onClick}
       size={'sm'}
       className={
-        'flex gap-2 font-semibold text-primary-500 hover:text-primary-400 '
+        'flex gap-2 font-semibold text-primary-500 hover:!text-primary-400 '
       }
+      variant={'text'}
     >
       <CheckCheck />
       <span>Mark all as read</span>

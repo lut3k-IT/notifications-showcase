@@ -30,10 +30,6 @@
     }
   }
 
-  a {
-    @apply text-primary-700  hover:underline cursor-pointer;
-  }
-
   a,
   button {
     @apply focus-visible-styles hover:cursor-pointer;

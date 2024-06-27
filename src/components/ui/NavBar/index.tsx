@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { RouteName, RoutePath } from '../../../router/enums';
 import useAppSelector from '../../hooks/useAppSelector';
@@ -11,21 +11,24 @@ const NavBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
 
   const notifications = useAppSelector((state) => state.notifications);
-  const unreadNotifications = notifications.filter((notification) => notification.status === 'unread');
+  const unreadNotifications = useMemo(
+    () => notifications.filter((notification) => notification.status === 'unread'),
+    [notifications]
+  );
   const unreadQuantity = unreadNotifications.length;
 
   return (
     <div className={'flex h-14 w-full items-center justify-between border-b bg-white pr-page'}>
       <nav className={'flex h-full [&>*]:h-full'}>
         <Button
-          type={'navLink'}
+          buttonType={'navLink'}
           variant={'text'}
           to={RoutePath.HOME}
         >
           {RouteName.HOME}
         </Button>
         <Button
-          type={'navLink'}
+          buttonType={'navLink'}
           variant={'text'}
           to={RoutePath.CREATOR}
         >

@@ -1,8 +1,13 @@
+import { useMemo } from 'react';
+
 import useAppSelector from '../../components/hooks/useAppSelector';
 
 const Home = () => {
   const notifications = useAppSelector((state) => state.notifications);
-  const unreadNotifications = notifications.filter((notification) => notification.status === 'unread');
+  const unreadNotifications = useMemo(
+    () => notifications.filter((notification) => notification.status === 'unread'),
+    [notifications]
+  );
 
   return (
     <div>

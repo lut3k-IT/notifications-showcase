@@ -4,16 +4,16 @@ import classNames from 'classnames';
 import { CommonSize } from '../../../constants/types';
 import { ButtonType, ButtonVariant } from './types';
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  type?: ButtonType;
+  buttonType?: ButtonType;
   variant?: ButtonVariant;
   size?: CommonSize;
   to?: string;
 }
 
 const Button = (props: ButtonProps) => {
-  const { children, type = 'button', variant = 'primary', size = 'md', to, className, ...rest } = props;
+  const { children, buttonType = 'button', variant = 'primary', size = 'md', to, className, ...rest } = props;
 
   const buttonClassName = classNames(
     'h-min rounded-md font-semibold transition-colors line-clamp-1 flex-center w-max',
@@ -37,40 +37,36 @@ const Button = (props: ButtonProps) => {
     className
   );
 
-  const renderButton = () => {
-    switch (type) {
-      case 'link':
-        return (
-          <Link
-            to={to || '/'}
-            className={buttonClassName}
-          >
-            {children}
-          </Link>
-        );
-      case 'navLink':
-        return (
-          <NavLink
-            to={to || '/'}
-            className={buttonClassName}
-          >
-            {children}
-          </NavLink>
-        );
-      case 'button':
-      default:
-        return (
-          <button
-            className={buttonClassName}
-            {...rest}
-          >
-            {children}
-          </button>
-        );
-    }
-  };
+  if (buttonType === 'link') {
+    return (
+      <Link
+        to={to || '/'}
+        className={buttonClassName}
+      >
+        {children}
+      </Link>
+    );
+  }
 
-  return renderButton();
+  if (buttonType === 'navLink') {
+    return (
+      <NavLink
+        to={to || '/'}
+        className={buttonClassName}
+      >
+        {children}
+      </NavLink>
+    );
+  }
+
+  return (
+    <button
+      className={buttonClassName}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default Button;

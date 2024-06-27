@@ -18,7 +18,7 @@ const Creator = () => {
     setType('request');
   };
 
-  const handleAddNotification = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const notification: Notification = {
@@ -33,7 +33,7 @@ const Creator = () => {
     resetForm();
   };
 
-  const handleRemoveAllNotifications = () => {
+  const handleDeleteAll = () => {
     dispatch(removeAllNotifications());
   };
 
@@ -42,7 +42,7 @@ const Creator = () => {
       <h2>Create notification</h2>
       <form
         className={'flex w-80 flex-col gap-2 rounded-lg border p-4'}
-        onSubmit={(e) => handleAddNotification(e)}
+        onSubmit={(e) => handleSubmit(e)}
       >
         <label>
           Message:
@@ -69,7 +69,7 @@ const Creator = () => {
         <Button className={'mt-4 !w-full'}>Create</Button>
       </form>
       <Button
-        onClick={() => handleRemoveAllNotifications()}
+        onClick={() => handleDeleteAll()}
         variant={'danger'}
       >
         Delete all notifications

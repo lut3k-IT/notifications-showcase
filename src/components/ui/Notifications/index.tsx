@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useAppSelector from '../../hooks/useAppSelector';
@@ -14,7 +14,10 @@ const Notifications = () => {
 
   const dispatch = useAppDispatch();
   const notifications = useAppSelector((state) => state.notifications);
-  const unreadNotifications = notifications.filter((notification) => notification.status === 'unread');
+  const unreadNotifications = useMemo(
+    () => notifications.filter((notification) => notification.status === 'unread'),
+    [notifications]
+  );
   const notificationsToRender = tab === 'all' ? notifications : unreadNotifications;
 
   const handleMarkNotificationAsRead = (id: Notification['id']) => {
@@ -31,12 +34,16 @@ const Notifications = () => {
         <TabButton
           isActive={tab === 'all'}
           onClick={() => setTab('all')}
+          role={'tab'}
+          aria-selected={tab === 'all'}
         >
           All Notifications
         </TabButton>
         <TabButton
           isActive={tab === 'unread'}
           onClick={() => setTab('unread')}
+          role={'tab'}
+          aria-selected={tab === 'unread'}
         >
           Unread Notifications
         </TabButton>

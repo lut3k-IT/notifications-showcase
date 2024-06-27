@@ -2,14 +2,14 @@ import classNames from 'classnames';
 
 import Button from '../../../Button';
 
-interface TabButtonProps {
+interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isActive: boolean;
   onClick: () => void;
   children: React.ReactNode;
 }
 
 const TabButton = (props: TabButtonProps) => {
-  const { isActive, onClick, children } = props;
+  const { isActive, onClick, children, ...rest } = props;
 
   return (
     <Button
@@ -20,6 +20,7 @@ const TabButton = (props: TabButtonProps) => {
         'border-gray-200 text-gray-500': !isActive
       })}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </Button>

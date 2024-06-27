@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useSortedNotifications from '../../hooks/useSortedNotifications';
+import Alert from '../Alert';
 import AllReadButton from './components/AllReadButton';
 import Message from './components/Message';
 import MessagesContainer from './components/MessagesContainer';
@@ -19,6 +20,7 @@ const Notifications = () => {
     [notifications]
   );
   const notificationsToRender = tab === 'all' ? notifications : unreadNotifications;
+  const hasNotifications = notifications.length > 0;
 
   return (
     <div className={'flex flex-col gap-6'}>
@@ -52,6 +54,7 @@ const Notifications = () => {
             onRead={() => handleMarkAsRead(dispatch, notification.id)}
           />
         ))}
+        {!hasNotifications && <Alert withoutIcon>You don't have any notifications</Alert>}
       </MessagesContainer>
     </div>
   );

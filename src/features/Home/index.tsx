@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Github } from 'lucide-react';
 
 import useAppSelector from '../../components/hooks/useAppSelector';
+import Card from '../../components/ui/Card';
 
 const Home = () => {
   const notifications = useAppSelector((state) => state.notifications);
@@ -20,8 +21,10 @@ const Home = () => {
         <Github />
         <span>Click to see the project</span>
       </a>
-      <div>You have {notifications.length} notifications</div>
-      <b>{unreadNotifications.length} unread</b>
+      <Card>
+        <div>You have {notifications.length} notifications</div>
+        <b>{unreadNotifications.length} unread</b>
+      </Card>
     </div>
   );
 };

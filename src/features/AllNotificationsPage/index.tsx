@@ -1,12 +1,12 @@
 import useAppDispatch from '../../components/hooks/useAppDispatch';
-import useAppSelector from '../../components/hooks/useAppSelector';
+import useSortedNotifications from '../../components/hooks/useSortedNotifications';
 import Message from '../../components/ui/Notifications/components/Message';
 import MessagesContainer from '../../components/ui/Notifications/components/MessagesContainer';
 import { handleMarkAsRead } from '../../components/ui/Notifications/helpers';
 
 const AllNotificationsPage = () => {
   const dispatch = useAppDispatch();
-  const notifications = useAppSelector((state) => state.notifications);
+  const notifications = useSortedNotifications();
 
   return (
     <MessagesContainer>

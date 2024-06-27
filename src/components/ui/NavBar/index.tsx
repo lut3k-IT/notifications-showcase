@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 
 import { RouteName, RoutePath } from '../../../router/enums';
-import useAppSelector from '../../hooks/useAppSelector';
+import useSortedNotifications from '../../hooks/useSortedNotifications';
 import Button from '../Button';
 import Modal from '../Modal';
 import Notifications from '../Notifications';
@@ -11,7 +11,7 @@ import UnreadQuantityBadge from '../Notifications/components/UnreadQuantityBadge
 const NavBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
 
-  const notifications = useAppSelector((state) => state.notifications);
+  const notifications = useSortedNotifications();
   const unreadNotifications = useMemo(
     () => notifications.filter((notification) => notification.status === 'unread'),
     [notifications]

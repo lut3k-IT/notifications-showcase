@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 
 import useAppDispatch from '../../hooks/useAppDispatch';
-import useAppSelector from '../../hooks/useAppSelector';
+import useSortedNotifications from '../../hooks/useSortedNotifications';
 import AllReadButton from './components/AllReadButton';
 import Message from './components/Message';
 import MessagesContainer from './components/MessagesContainer';
@@ -11,9 +11,9 @@ import { NotificationTab } from './types';
 
 const Notifications = () => {
   const [tab, setTab] = useState<NotificationTab>('all');
-
   const dispatch = useAppDispatch();
-  const notifications = useAppSelector((state) => state.notifications);
+
+  const notifications = useSortedNotifications();
   const unreadNotifications = useMemo(
     () => notifications.filter((notification) => notification.status === 'unread'),
     [notifications]

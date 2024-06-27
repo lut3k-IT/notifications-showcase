@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { RemoveScroll } from 'react-remove-scroll';
 import classNames from 'classnames';
@@ -21,7 +21,9 @@ const Modal = (props: ModalProps) => {
 
 const ModalConditional = (props: ModalProps) => {
   const { title, className, isOpen, closeModal, children, disableOutsideClick } = props;
+  const modalRef = useRef<HTMLDivElement | null>(null);
 
+  // Close the modal when the escape key is pressed
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && !disableOutsideClick) {
@@ -35,6 +37,16 @@ const ModalConditional = (props: ModalProps) => {
     };
   }, [closeModal, disableOutsideClick]);
 
+  // Set focus to the first focusable element when the modal is opened
+  useEffect(() => {
+    if (isOpen && modalRef.current) {
+      const focusableElements = modalRef.current.querySelectorAll('button, select, textarea');
+      if (focusableElements.length) {
+        (focusableElements[0] as HTMLElement).focus();
+      }
+    }
+  }, [isOpen]);
+
   if (!isOpen) {
     return null;
   }
@@ -47,6 +59,7 @@ const ModalConditional = (props: ModalProps) => {
       >
         <div
           role={'dialog'}
+          ref={modalRef}
           onClick={(e) => e.stopPropagation()}
           className={classNames(
             'relative z-50 max-h-[100svh] w-full max-w-xl rounded-lg border border-gray-200 bg-white p-4 shadow-lg',

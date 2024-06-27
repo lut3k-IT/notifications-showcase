@@ -18,7 +18,12 @@ const NotificationBell = (props: NotificationBellProps) => {
       {...rest}
     >
       <Bell className={'text-gray-500'} />
-      {count ? <UnreadQuantityBadge count={count} /> : null}
+      {count ? (
+        <UnreadQuantityBadge
+          count={count}
+          className={'absolute right-1 top-1'}
+        />
+      ) : null}
     </Button>
   );
 };

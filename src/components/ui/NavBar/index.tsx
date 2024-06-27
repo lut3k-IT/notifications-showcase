@@ -6,6 +6,7 @@ import Button from '../Button';
 import Modal from '../Modal';
 import Notifications from '../Notifications';
 import NotificationBell from '../Notifications/components/NotificationBell';
+import UnreadQuantityBadge from '../Notifications/components/UnreadQuantityBadge';
 
 const NavBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
@@ -40,7 +41,17 @@ const NavBar = () => {
         count={unreadQuantity}
       />
       <Modal
-        title={'Modal Title'}
+        title={
+          <h2 className={'relative w-max'}>
+            Notifications
+            {unreadQuantity > 0 && (
+              <UnreadQuantityBadge
+                count={unreadQuantity}
+                className={'absolute -right-5 top-0'}
+              />
+            )}
+          </h2>
+        }
         isOpen={isNotificationModalOpen}
         closeModal={() => setIsNotificationModalOpen(false)}
       >

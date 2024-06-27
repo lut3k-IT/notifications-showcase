@@ -57,7 +57,7 @@ const ModalConditional = (props: ModalProps) => {
             onClick={closeModal}
             className={'absolute right-4 top-4'}
           />
-          {title && <div className={'mb-8 mr-6 text-xl font-semibold'}>{title}</div>}
+          {title && <h2 className={'mb-8 mr-6 text-xl font-semibold'}>{title}</h2>}
           <div>{children}</div>
         </div>
       </div>

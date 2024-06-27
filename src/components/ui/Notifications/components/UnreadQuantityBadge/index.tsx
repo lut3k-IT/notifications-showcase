@@ -1,21 +1,25 @@
+import classNames from 'classnames';
+
 import { NotificationCount } from '../../types';
 
-interface NotificationBadgeProps {
+interface UnreadQuantityBadgeProps {
   count: NotificationCount;
+  className?: string;
 }
 
-const NotificationBadge = (props: NotificationBadgeProps) => {
-  const { count } = props;
+const UnreadQuantityBadge = (props: UnreadQuantityBadgeProps) => {
+  const { count, className } = props;
 
   return (
     <div
-      className={
-        'flex-center absolute right-1 top-1 h-4 w-min min-w-4 rounded-full bg-danger-500 text-[0.625rem] text-white'
-      }
+      className={classNames(
+        'flex-center h-4 w-min min-w-4 rounded-full bg-danger-500 text-[0.625rem] text-white',
+        className
+      )}
     >
       {count > 9 ? '+9' : count}
     </div>
   );
 };
 
-export default NotificationBadge;
+export default UnreadQuantityBadge;

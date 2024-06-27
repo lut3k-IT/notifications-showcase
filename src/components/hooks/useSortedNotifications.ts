@@ -1,9 +1,13 @@
+import { useMemo } from 'react';
+
 import useAppSelector from './useAppSelector';
 
 const useSortedNotifications = () => {
-  const sortedNotifications = useAppSelector((state) =>
-    [...state.notifications].sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))
-  );
+  const notifications = useAppSelector((state) => state.notifications);
+
+  const sortedNotifications = useMemo(() => {
+    return [...notifications].sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp));
+  }, [notifications]);
 
   return sortedNotifications;
 };

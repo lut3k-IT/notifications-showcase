@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { RouteName, RoutePath } from '../../../router/enums';
 import useSortedNotifications from '../../hooks/useSortedNotifications';
@@ -10,6 +11,7 @@ import UnreadQuantityBadge from '../Notifications/components/UnreadQuantityBadge
 
 const NavBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
+  const location = useLocation();
 
   const notifications = useSortedNotifications();
   const unreadNotifications = useMemo(
@@ -17,6 +19,10 @@ const NavBar = () => {
     [notifications]
   );
   const unreadQuantity = unreadNotifications.length;
+
+  useEffect(() => {
+    setIsNotificationModalOpen(false);
+  }, [location]);
 
   return (
     <div className={'h-navbar fixed z-10 flex w-full items-center justify-between border-b bg-white pr-page'}>

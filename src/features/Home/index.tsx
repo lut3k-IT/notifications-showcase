@@ -19,7 +19,7 @@ const Home = () => {
         className={'flex-center mb-4 cursor-pointer gap-2 rounded-lg bg-gray-100 p-2 hover:bg-gray-200'}
       >
         <Github />
-        <span>Click to see the project</span>
+        <span>Click to see the source code on GitHub</span>
       </a>
       <Card>
         <div>You have {notifications.length} notifications</div>

@@ -6,8 +6,8 @@ import AllReadButton from './components/AllReadButton';
 import Message from './components/Message';
 import MessagesContainer from './components/MessagesContainer';
 import TabButton from './components/TabButton';
-import { markAllNotificationsAsRead, markNotificationAsRead } from './notificationsSlice';
-import { Notification, NotificationTab } from './types';
+import { handleMarkAllAsRead, handleMarkAsRead } from './helpers';
+import { NotificationTab } from './types';
 
 const Notifications = () => {
   const [tab, setTab] = useState<NotificationTab>('all');
@@ -19,14 +19,6 @@ const Notifications = () => {
     [notifications]
   );
   const notificationsToRender = tab === 'all' ? notifications : unreadNotifications;
-
-  const handleMarkNotificationAsRead = (id: Notification['id']) => {
-    dispatch(markNotificationAsRead(id));
-  };
-
-  const handleMarkAllNotificationsAsRead = () => {
-    dispatch(markAllNotificationsAsRead());
-  };
 
   return (
     <div className={'flex flex-col gap-6'}>
@@ -49,7 +41,7 @@ const Notifications = () => {
         </TabButton>
         <AllReadButton
           hasUnread={unreadNotifications.length > 0}
-          onClick={() => handleMarkAllNotificationsAsRead()}
+          onClick={() => handleMarkAllAsRead(dispatch)}
         />
       </div>
       <MessagesContainer>
@@ -57,7 +49,7 @@ const Notifications = () => {
           <Message
             key={notification.id}
             notification={notification}
-            onRead={() => handleMarkNotificationAsRead(notification.id)}
+            onRead={() => handleMarkAsRead(dispatch, notification.id)}
           />
         ))}
       </MessagesContainer>

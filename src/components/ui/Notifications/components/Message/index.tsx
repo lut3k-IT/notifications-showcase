@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { RoutePath } from '../../../../../router/enums';
 import { getTimestamp } from '../../../../../utils/dateHelpers';
 import useAppDispatch from '../../../../hooks/useAppDispatch';
-import { markNotificationAsRead } from '../../notificationsSlice';
+import { getNotificationName, handleMarkAsRead } from '../../helpers';
 import { Notification } from '../../types';
 import UnreadBadge from '../UnreadBadge';
 import Avatar from './components/Avatar';
@@ -17,13 +17,9 @@ interface MessageProps {
 const Message = (props: MessageProps) => {
   const { notification, onRead } = props;
   const { id, type, message, timestamp, status } = notification;
+
   const isUnread = status === 'unread';
-
   const dispatch = useAppDispatch();
-
-  const handleMarkAsRead = (id: Notification['id']) => {
-    dispatch(markNotificationAsRead(id));
-  };
 
   return (
     <Link
@@ -32,11 +28,11 @@ const Message = (props: MessageProps) => {
         'bg-white': !isUnread
       })}
       to={RoutePath.NOTIFICATION + `/${id}`}
-      onClick={() => handleMarkAsRead(id)}
+      onClick={() => handleMarkAsRead(dispatch, id)}
     >
       <Avatar notificationType={type} />
-      <div className={'flex w-full flex-col gap-1 pr-10'}>
-        <div className={'line-clamp-2 text-sm'}>{message}</div>
+      <div className={'flex w-full flex-col gap-0.5 pr-10'}>
+        <div className={'line-clamp-2'}>{message || getNotificationName(notification.type)}</div>
         <div className={'text-sm font-semibold text-gray-500'}>{getTimestamp(timestamp)}</div>
       </div>
       {isUnread && (

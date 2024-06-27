@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import AppOverlay from '../components/ui/AppOverlay';
-import AllNotificationsPage from '../features/AllNotificationsPage';
-import Creator from '../features/Creator';
-import Home from '../features/Home';
-import NotFoundRoute from '../features/NotFoundRoute/index';
-import Notification from '../features/NotificationPage';
+import AppOverlay from '../components/layouts/AppOverlay';
+import AllNotificationsPage from '../pages/AllNotificationsPage';
+import CreatorPage from '../pages/CreatorPage';
+import HomePage from '../pages/HomePage';
+import NotFoundRoute from '../pages/NotFoundRoute/index';
+import NotificationPage from '../pages/NotificationPage';
 import { RoutePath } from './enums';
 
 export const router = createBrowserRouter([
@@ -15,11 +15,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: RoutePath.HOME,
-        element: <Home />
+        element: <HomePage />
       },
       {
         path: RoutePath.CREATOR,
-        element: <Creator />
+        element: <CreatorPage />
       },
       {
         path: RoutePath.ALL_NOTIFICATIONS,
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: RoutePath.NOTIFICATION + '/:id',
-        element: <Notification />
+        element: <NotificationPage />
       },
       {
         path: '*',

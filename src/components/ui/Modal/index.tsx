@@ -40,7 +40,7 @@ const ModalConditional = (props: ModalProps) => {
   // Set focus to the first focusable element when the modal is opened
   useEffect(() => {
     if (isOpen && modalRef.current) {
-      const focusableElements = modalRef.current.querySelectorAll('button, select, textarea');
+      const focusableElements = modalRef.current.querySelectorAll('button, a, select, textarea');
       if (focusableElements.length) {
         (focusableElements[0] as HTMLElement).focus();
       }

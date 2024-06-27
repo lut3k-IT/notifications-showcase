@@ -1,10 +1,19 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'prettier'
+  ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'simple-import-sort'],
+  plugins: ['react-refresh', 'simple-import-sort', 'import'],
   rules: {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['off'],
@@ -29,6 +38,9 @@ module.exports = {
           ['^.+\\.(jpg|jpeg|png|svg)$']
         ]
       }
-    ]
+    ],
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error'
   }
 };

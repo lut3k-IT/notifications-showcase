@@ -1,4 +1,4 @@
-import { NotificationTimeForSelect } from '../components/ui/Notifications/types';
+import { NotificationTimeForSelect } from '../features/notifications/types';
 
 export const getTimestamp = (timestamp: string) => {
   const date = new Date(timestamp);

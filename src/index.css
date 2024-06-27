@@ -15,7 +15,7 @@
 
 @layer base {
   body {
-    @apply m-0 min-h-screen min-w-80 bg-white;
+    @apply m-0 min-h-screen bg-white;
 
     & *::-webkit-scrollbar-track {
       @apply rounded-lg bg-white;
@@ -32,7 +32,7 @@
 
   a,
   button {
-    @apply focus-visible-styles hover:cursor-pointer;
+    @apply focus-visible-styles transition-colors hover:cursor-pointer;
   }
 
   input,
@@ -69,5 +69,9 @@
 
   .focus-visible-styles {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+
+  .focus-visible-styles-danger {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-danger-500 focus-visible:ring-offset-2;
   }
 }

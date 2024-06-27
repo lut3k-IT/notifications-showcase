@@ -19,7 +19,7 @@ const NavBar = () => {
   const unreadQuantity = unreadNotifications.length;
 
   return (
-    <div className={'flex h-14 w-full items-center justify-between border-b bg-white pr-page'}>
+    <div className={'h-navbar fixed z-10 flex w-full items-center justify-between border-b bg-white pr-page'}>
       <nav className={'flex h-full [&>*]:h-full'}>
         <Button
           buttonType={'navLink'}
@@ -34,6 +34,13 @@ const NavBar = () => {
           to={RoutePath.CREATOR}
         >
           {RouteName.CREATOR}
+        </Button>
+        <Button
+          buttonType={'navLink'}
+          variant={'text'}
+          to={RoutePath.ALL_NOTIFICATIONS}
+        >
+          {RouteName.ALL_NOTIFICATIONS}
         </Button>
       </nav>
       <NotificationBell

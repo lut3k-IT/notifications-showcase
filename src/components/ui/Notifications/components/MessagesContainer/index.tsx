@@ -1,13 +1,20 @@
+import classNames from 'classnames';
+
 import NoNotificationsMessage from '../NoNotificationsMessage';
 
 interface MessagesContainerProps {
   children?: React.ReactNode;
+  className?: string;
 }
 
 const MessagesContainer = (props: MessagesContainerProps) => {
-  const { children } = props;
+  const { children, className } = props;
 
-  return <div className={'flex max-h-96 flex-col gap-2 overflow-y-auto'}>{children || <NoNotificationsMessage />}</div>;
+  return (
+    <div className={classNames('flex flex-col gap-2 overflow-y-auto', className)}>
+      {children || <NoNotificationsMessage />}
+    </div>
+  );
 };
 
 export default MessagesContainer;

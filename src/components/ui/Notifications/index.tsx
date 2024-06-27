@@ -44,7 +44,7 @@ const Notifications = () => {
           onClick={() => handleMarkAllAsRead(dispatch)}
         />
       </div>
-      <MessagesContainer>
+      <MessagesContainer className={'max-h-96'}>
         {notificationsToRender.map((notification) => (
           <Message
             key={notification.id}

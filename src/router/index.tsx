@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import AppOverlay from '../components/ui/AppOverlay';
+import AllNotificationsPage from '../features/AllNotificationsPage';
 import Creator from '../features/Creator';
 import Home from '../features/Home';
 import NotFoundRoute from '../features/NotFoundRoute/index';
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: RoutePath.CREATOR,
         element: <Creator />
+      },
+      {
+        path: RoutePath.ALL_NOTIFICATIONS,
+        element: <AllNotificationsPage />
       },
       {
         path: RoutePath.NOTIFICATION + '/:id',

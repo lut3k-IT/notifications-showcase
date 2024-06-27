@@ -6,7 +6,7 @@ const AppOverlay = () => {
   return (
     <>
       <NavBar />
-      <main className={'p-page'}>
+      <main className={'pt-navbar-space p-page'}>
         <Outlet />
       </main>
     </>

@@ -18,7 +18,9 @@ export default {
         warning: colors.yellow
       },
       spacing: {
-        ...rem(16, 'page')
+        ...rem(16, 'page'),
+        ...rem(56, 'navbar'),
+        ...rem(72, 'navbar-space')
       }
     }
   },

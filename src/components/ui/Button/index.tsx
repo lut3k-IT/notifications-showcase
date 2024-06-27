@@ -19,9 +19,9 @@ const Button = (props: ButtonProps) => {
     'h-min rounded-md font-semibold transition-colors line-clamp-1 flex-center w-max',
     {
       'bg-primary-500 text-white hover:bg-primary-400': variant === 'primary',
-      'bg-danger-500 text-white hover:bg-danger-400': variant === 'danger',
-      'bg-success-500 text-white hover:bg-success-400': variant === 'success',
       'bg-secondary-500 text-white hover:bg-secondary-400': variant === 'secondary',
+      'bg-danger-500 text-white hover:bg-danger-400 focus-visible-styles-danger': variant === 'danger',
+      'bg-success-500 text-white hover:bg-success-400': variant === 'success',
       'bg-white border hover:bg-gray-200': variant === 'outline',
       'bg-transparent text-black': variant === 'ghost',
       'bg-transparent text-primary-500 hover:underline': variant === 'link',

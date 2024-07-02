@@ -14,12 +14,12 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-const Modal = (props: ModalProps) => {
+export default function Modal(props: ModalProps) {
   const { isOpen } = props;
   return isOpen ? <ModalConditional {...props} /> : null;
-};
+}
 
-const ModalConditional = (props: ModalProps) => {
+function ModalConditional(props: ModalProps) {
   const { title, className, isOpen, closeModal, children, disableOutsideClick } = props;
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -81,6 +81,4 @@ const ModalConditional = (props: ModalProps) => {
     </RemoveScroll>,
     document.body
   );
-};
-
-export default Modal;
+}

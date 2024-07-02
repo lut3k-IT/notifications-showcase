@@ -9,7 +9,7 @@ interface NotificationAvatarProps {
 
 const style = 'rounded-full w-12 h-12 flex-shrink-0 bg-gradient-to-bl';
 
-const NotificationAvatar = (props: NotificationAvatarProps) => {
+export default function NotificationAvatar(props: NotificationAvatarProps) {
   const { notificationType } = props;
 
   return (
@@ -36,6 +36,4 @@ const NotificationAvatar = (props: NotificationAvatarProps) => {
       )}
     </div>
   );
-};
-
-export default NotificationAvatar;
+}

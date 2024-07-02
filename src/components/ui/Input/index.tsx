@@ -4,7 +4,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
 }
 
-const Input = (props: InputProps) => {
+export default function Input(props: InputProps) {
   const { className, ...rest } = props;
 
   return (
@@ -16,6 +16,4 @@ const Input = (props: InputProps) => {
       {...rest}
     />
   );
-};
-
-export default Input;
+}

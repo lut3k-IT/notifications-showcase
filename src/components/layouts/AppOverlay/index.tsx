@@ -2,15 +2,13 @@ import { Outlet } from 'react-router-dom';
 
 import NavBar from '../NavBar';
 
-const AppOverlay = () => {
+export default function AppOverlay() {
   return (
     <>
       <NavBar />
-      <main className={'pt-navbar-space p-page'}>
+      <main className={'p-page pt-navbar-space'}>
         <Outlet />
       </main>
     </>
   );
-};
-
-export default AppOverlay;
+}

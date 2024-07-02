@@ -8,7 +8,7 @@ interface CloseButtonProps {
   onClick: () => void;
 }
 
-const CloseButton = (props: CloseButtonProps) => {
+export default function CloseButton(props: CloseButtonProps) {
   const { className, onClick } = props;
 
   return (
@@ -20,6 +20,4 @@ const CloseButton = (props: CloseButtonProps) => {
       <X className={'transition-transform'} />
     </Button>
   );
-};
-
-export default CloseButton;
+}

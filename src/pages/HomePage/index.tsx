@@ -4,7 +4,7 @@ import { Github } from 'lucide-react';
 import Card from '../../components/ui/Card';
 import { useAppSelector } from '../../hooks/useAppSelector';
 
-const HomePage = () => {
+export default function HomePage() {
   const notifications = useAppSelector((state) => state.notifications);
   const unreadNotifications = useMemo(
     () => notifications.filter((notification) => notification.status === 'unread'),
@@ -28,6 +28,4 @@ const HomePage = () => {
       </Card>
     </div>
   );
-};
-
-export default HomePage;
+}

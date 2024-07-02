@@ -7,7 +7,7 @@ interface DetailedNotificationProps {
   notification: INotification;
 }
 
-const DetailedNotification = (props: DetailedNotificationProps) => {
+export default function DetailedNotification(props: DetailedNotificationProps) {
   const { notification } = props;
   const { id, type, message, timestamp, status } = notification;
 
@@ -31,6 +31,4 @@ const DetailedNotification = (props: DetailedNotificationProps) => {
       </div>
     </Card>
   );
-};
-
-export default DetailedNotification;
+}

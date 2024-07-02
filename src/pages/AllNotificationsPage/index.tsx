@@ -5,7 +5,7 @@ import { handleMarkAsRead } from '../../features/notifications/helpers';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import useSortedNotifications from '../../hooks/useSortedNotifications';
 
-const AllNotificationsPage = () => {
+export default function AllNotificationsPage() {
   const dispatch = useAppDispatch();
   const notifications = useSortedNotifications();
   const hasNotifications = notifications.length > 0;
@@ -22,6 +22,4 @@ const AllNotificationsPage = () => {
       {!hasNotifications && <Alert withoutIcon>You don&apos;t have any notifications</Alert>}
     </NotificationsContainer>
   );
-};
-
-export default AllNotificationsPage;
+}

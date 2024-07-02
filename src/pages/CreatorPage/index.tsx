@@ -9,7 +9,7 @@ import { INotification, NotificationTimeForSelect, NotificationType } from '../.
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { calculatePastTimestamp } from '../../utils/dateHelpers';
 
-const CreatorPage = () => {
+export default function CreatorPage() {
   const [message, setMessage] = useState('');
   const [type, setType] = useState<NotificationType>('request');
   const [time, setTime] = useState<NotificationTimeForSelect>('now');
@@ -94,6 +94,4 @@ const CreatorPage = () => {
       </Button>
     </div>
   );
-};
-
-export default CreatorPage;
+}

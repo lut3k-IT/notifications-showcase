@@ -5,10 +5,8 @@ interface CardProps {
   children: React.ReactNode;
 }
 
-const Card = (props: CardProps) => {
+export default function Card(props: CardProps) {
   const { className, children } = props;
 
   return <div className={classNames('rounded-lg border p-4 shadow', className)}>{children}</div>;
-};
-
-export default Card;
+}

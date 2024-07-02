@@ -7,7 +7,7 @@ interface UnreadQuantityBadgeProps {
   className?: string;
 }
 
-const UnreadQuantityBadge = (props: UnreadQuantityBadgeProps) => {
+export default function UnreadQuantityBadge(props: UnreadQuantityBadgeProps) {
   const { count, className } = props;
 
   return (
@@ -20,6 +20,4 @@ const UnreadQuantityBadge = (props: UnreadQuantityBadgeProps) => {
       {count > 9 ? '+9' : count}
     </div>
   );
-};
-
-export default UnreadQuantityBadge;
+}

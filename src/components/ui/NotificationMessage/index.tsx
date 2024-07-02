@@ -14,7 +14,7 @@ interface NotificationMessageProps {
   onRead?: () => void;
 }
 
-const NotificationMessage = (props: NotificationMessageProps) => {
+export default function NotificationMessage(props: NotificationMessageProps) {
   const { notification, onRead } = props;
   const { id, type, message, timestamp, status } = notification;
 
@@ -43,6 +43,4 @@ const NotificationMessage = (props: NotificationMessageProps) => {
       )}
     </Link>
   );
-};
-
-export default NotificationMessage;
+}

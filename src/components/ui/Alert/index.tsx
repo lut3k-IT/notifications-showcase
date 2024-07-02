@@ -7,7 +7,7 @@ interface AlertProps {
   withoutIcon?: boolean;
 }
 
-const Alert = (props: AlertProps) => {
+export default function Alert(props: AlertProps) {
   const { className, children, withoutIcon } = props;
 
   return (
@@ -15,6 +15,4 @@ const Alert = (props: AlertProps) => {
       {!withoutIcon && <TriangleAlert />} {children}
     </div>
   );
-};
-
-export default Alert;
+}

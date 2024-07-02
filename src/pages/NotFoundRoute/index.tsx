@@ -1,6 +1,6 @@
 import { useRouteError } from 'react-router-dom';
 
-const NotFoundRoute = () => {
+export default function NotFoundRoute() {
   const error: unknown = useRouteError();
 
   return (
@@ -12,6 +12,4 @@ const NotFoundRoute = () => {
       </pre>
     </div>
   );
-};
-
-export default NotFoundRoute;
+}

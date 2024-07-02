@@ -5,7 +5,7 @@ import { INotification } from '../../features/notifications/types';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import DetailedNotification from './components/DetailedNotification';
 
-const NotificationPage = () => {
+export default function NotificationPage() {
   const { id } = useParams();
   const notification = useAppSelector((state) =>
     state.notifications.find((notification: INotification) => notification.id === id)
@@ -14,6 +14,4 @@ const NotificationPage = () => {
   if (!notification) return <Alert>Notification not found</Alert>;
 
   return <DetailedNotification notification={notification} />;
-};
-
-export default NotificationPage;
+}

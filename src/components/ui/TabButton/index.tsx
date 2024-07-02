@@ -8,7 +8,7 @@ interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-const TabButton = (props: TabButtonProps) => {
+export default function TabButton(props: TabButtonProps) {
   const { isActive, onClick, children, ...rest } = props;
 
   return (
@@ -25,6 +25,4 @@ const TabButton = (props: TabButtonProps) => {
       {children}
     </Button>
   );
-};
-
-export default TabButton;
+}

@@ -9,7 +9,7 @@ import NotificationBell from '../../ui/NotificationBell';
 import NotificationPanel from '../../ui/NotificationPanel';
 import UnreadQuantityBadge from '../../ui/UnreadQuantityBadge';
 
-const NavBar = () => {
+export default function NavBar() {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
   const location = useLocation();
 
@@ -25,7 +25,7 @@ const NavBar = () => {
   }, [location]);
 
   return (
-    <div className={'h-navbar fixed z-10 flex w-full items-center justify-between border-b bg-white pr-page'}>
+    <div className={'fixed z-10 flex h-navbar w-full items-center justify-between border-b bg-white pr-page'}>
       <nav className={'flex h-full [&>*]:h-full'}>
         <Button
           buttonType={'navLink'}
@@ -72,6 +72,4 @@ const NavBar = () => {
       </Modal>
     </div>
   );
-};
-
-export default NavBar;
+}

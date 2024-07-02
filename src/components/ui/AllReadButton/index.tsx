@@ -6,20 +6,18 @@ interface AllReadButtonProps {
   onClick: () => void;
 }
 
-const AllReadButton = (props: AllReadButtonProps) => {
+export default function AllReadButton(props: AllReadButtonProps) {
   const { onClick } = props;
 
   return (
     <Button
       onClick={onClick}
       size={'sm'}
-      className={'flex gap-2 font-semibold text-primary-500 hover:!text-primary-400'}
+      className={'flex gap-2 !rounded-full font-semibold text-primary-500 hover:!text-primary-400'}
       variant={'text'}
     >
       <CheckCheck />
       <span>Mark all as read</span>
     </Button>
   );
-};
-
-export default AllReadButton;
+}

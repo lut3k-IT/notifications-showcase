@@ -8,7 +8,7 @@ interface NotificationBellProps extends React.HTMLAttributes<HTMLButtonElement> 
   count?: NotificationCount;
 }
 
-const NotificationBell = (props: NotificationBellProps) => {
+export default function NotificationBell(props: NotificationBellProps) {
   const { count, ...rest } = props;
 
   return (
@@ -26,6 +26,4 @@ const NotificationBell = (props: NotificationBellProps) => {
       ) : null}
     </Button>
   );
-};
-
-export default NotificationBell;
+}

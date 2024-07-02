@@ -10,7 +10,7 @@ import NotificationMessage from '../NotificationMessage';
 import NotificationsContainer from '../NotificationsContainer';
 import TabButton from '../TabButton';
 
-const NotificationPanel = () => {
+export default function NotificationPanel() {
   const [tab, setTab] = useState<NotificationTab>('all');
   const dispatch = useAppDispatch();
 
@@ -21,6 +21,7 @@ const NotificationPanel = () => {
   );
   const notificationsToRender = tab === 'all' ? notifications : unreadNotifications;
   const hasNotifications = notifications.length > 0;
+  const hasUnreadNotifications = unreadNotifications.length > 0;
 
   return (
     <div className={'flex flex-col gap-6'}>
@@ -41,7 +42,7 @@ const NotificationPanel = () => {
         >
           Unread Notifications
         </TabButton>
-        {hasNotifications && <AllReadButton onClick={() => handleMarkAllAsRead(dispatch)} />}
+        {hasUnreadNotifications && <AllReadButton onClick={() => handleMarkAllAsRead(dispatch)} />}
       </div>
       <NotificationsContainer className={'max-h-96'}>
         {notificationsToRender.map((notification) => (
@@ -55,6 +56,4 @@ const NotificationPanel = () => {
       </NotificationsContainer>
     </div>
   );
-};
-
-export default NotificationPanel;
+}

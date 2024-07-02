@@ -5,7 +5,7 @@ interface UnreadBadgeProps {
   onClick?: () => void;
 }
 
-const UnreadBadge = (props: UnreadBadgeProps) => {
+export default function UnreadBadge(props: UnreadBadgeProps) {
   const { className, onClick } = props;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -22,6 +22,4 @@ const UnreadBadge = (props: UnreadBadgeProps) => {
       <div className={'h-3 w-3 rounded-full bg-primary-500'} />
     </Button>
   );
-};
-
-export default UnreadBadge;
+}

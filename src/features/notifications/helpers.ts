@@ -18,10 +18,10 @@ export const getNotificationName = (type: INotification['type']) => {
   }
 };
 
-export const handleMarkAsRead = (dispatch: ReturnType<typeof useAppDispatch>, id: INotification['id']) => {
+export const setNotificationAsRead = (dispatch: ReturnType<typeof useAppDispatch>, id: INotification['id']) => {
   dispatch(markNotificationAsRead(id));
 };
 
-export const handleMarkAllAsRead = (dispatch: ReturnType<typeof useAppDispatch>) => {
+export const setAllNotificationsAsRead = (dispatch: ReturnType<typeof useAppDispatch>) => {
   dispatch(markAllNotificationsAsRead());
 };

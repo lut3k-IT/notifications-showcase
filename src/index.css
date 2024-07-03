@@ -18,7 +18,7 @@
     @apply m-0 min-h-screen bg-white;
 
     & *::-webkit-scrollbar-track {
-      @apply rounded-lg bg-white;
+      @apply bg-white;
     }
 
     & *::-webkit-scrollbar {

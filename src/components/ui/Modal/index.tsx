@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { RemoveScroll } from 'react-remove-scroll';
 import classNames from 'classnames';
 
+import useEscapeKey from '../../../hooks/useEscapeKey';
 import CloseButton from '../CloseButton';
 
 interface ModalProps {
@@ -10,32 +11,18 @@ interface ModalProps {
   className?: string;
   isOpen: boolean;
   closeModal: () => void;
-  disableOutsideClick?: boolean;
   children: React.ReactNode;
 }
 
 export default function Modal(props: ModalProps) {
-  const { isOpen } = props;
-  return isOpen ? <ModalConditional {...props} /> : null;
+  return props.isOpen ? <ModalConditional {...props} /> : null;
 }
 
 function ModalConditional(props: ModalProps) {
-  const { title, className, isOpen, closeModal, children, disableOutsideClick } = props;
+  const { title, className, isOpen, closeModal, children } = props;
   const modalRef = useRef<HTMLDivElement | null>(null);
 
-  // Close the modal when the escape key is pressed
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && !disableOutsideClick) {
-        closeModal();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown, false);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown, false);
-    };
-  }, [closeModal, disableOutsideClick]);
+  useEscapeKey(closeModal);
 
   // Set focus to the first focusable element when the modal is opened
   useEffect(() => {
@@ -46,10 +33,6 @@ function ModalConditional(props: ModalProps) {
       }
     }
   }, [isOpen]);
-
-  if (!isOpen) {
-    return null;
-  }
 
   return createPortal(
     <RemoveScroll enabled={isOpen}>

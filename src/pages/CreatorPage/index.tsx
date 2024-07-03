@@ -15,10 +15,8 @@ export default function CreatorPage() {
   const [time, setTime] = useState<NotificationTimeForSelect>('now');
   const dispatch = useAppDispatch();
 
-  const resetForm = () => {
+  const resetMessage = () => {
     setMessage('');
-    setType('request');
-    setTime('now');
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,7 +32,7 @@ export default function CreatorPage() {
     };
 
     dispatch(addNotification(notification));
-    resetForm();
+    resetMessage();
   };
 
   const handleDeleteAll = () => {
@@ -45,7 +43,7 @@ export default function CreatorPage() {
     <div className={'flex flex-col gap-4'}>
       <form
         className={'flex w-80 flex-col gap-2 rounded-lg border p-4'}
-        onSubmit={(e) => handleSubmit(e)}
+        onSubmit={handleSubmit}
       >
         <h2>Create notification</h2>
         <label>
@@ -87,7 +85,7 @@ export default function CreatorPage() {
         <Button className={'mt-4 !w-full'}>Create</Button>
       </form>
       <Button
-        onClick={() => handleDeleteAll()}
+        onClick={handleDeleteAll}
         variant={'danger'}
       >
         Delete all notifications

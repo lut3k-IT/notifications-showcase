@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { getNotificationName, handleMarkAsRead } from '../../../features/notifications/helpers';
+import { getNotificationName, setNotificationAsRead } from '../../../features/notifications/helpers';
 import { INotification } from '../../../features/notifications/types';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { RoutePath } from '../../../router/enums';
@@ -28,11 +28,11 @@ export default function NotificationMessage(props: NotificationMessageProps) {
         'bg-white': !isUnread
       })}
       to={RoutePath.NOTIFICATION + `/${id}`}
-      onClick={() => handleMarkAsRead(dispatch, id)}
+      onClick={() => setNotificationAsRead(dispatch, id)}
     >
       <NotificationAvatar notificationType={type} />
       <div className={'flex w-full flex-col gap-0.5 pr-10'}>
-        <div className={'line-clamp-2'}>{message || getNotificationName(notification.type)}</div>
+        <div className={'line-clamp-2 break-all'}>{message || getNotificationName(notification.type)}</div>
         <div className={'text-sm font-semibold text-gray-500'}>{getTimestamp(timestamp)}</div>
       </div>
       {isUnread && (

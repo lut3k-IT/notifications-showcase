@@ -17,7 +17,7 @@ export default function UnreadBadge(props: UnreadBadgeProps) {
     <Button
       variant={'icon-sm'}
       className={className}
-      onClick={(e) => handleClick(e)}
+      onClick={handleClick}
     >
       <div className={'h-3 w-3 rounded-full bg-primary-500'} />
     </Button>

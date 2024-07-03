@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-import { handleMarkAllAsRead, handleMarkAsRead } from '../../../features/notifications/helpers';
+import { setAllNotificationsAsRead, setNotificationAsRead } from '../../../features/notifications/helpers';
 import { NotificationTab } from '../../../features/notifications/types';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import useSortedNotifications from '../../../hooks/useSortedNotifications';
@@ -15,16 +15,18 @@ export default function NotificationPanel() {
   const dispatch = useAppDispatch();
 
   const notifications = useSortedNotifications();
+  const hasNotifications = notifications.length > 0;
+
   const unreadNotifications = useMemo(
     () => notifications.filter((notification) => notification.status === 'unread'),
     [notifications]
   );
-  const notificationsToRender = tab === 'all' ? notifications : unreadNotifications;
-  const hasNotifications = notifications.length > 0;
   const hasUnreadNotifications = unreadNotifications.length > 0;
 
+  const notificationsToRender = tab === 'all' ? notifications : unreadNotifications;
+
   return (
-    <div className={'flex flex-col gap-6'}>
+    <div className={'flex w-96 flex-col gap-4 p-2'}>
       <div className={'flex flex-wrap gap-2'}>
         <TabButton
           isActive={tab === 'all'}
@@ -42,17 +44,20 @@ export default function NotificationPanel() {
         >
           Unread Notifications
         </TabButton>
-        {hasUnreadNotifications && <AllReadButton onClick={() => handleMarkAllAsRead(dispatch)} />}
+        {hasUnreadNotifications && <AllReadButton onClick={() => setAllNotificationsAsRead(dispatch)} />}
       </div>
       <NotificationsContainer className={'max-h-96'}>
         {notificationsToRender.map((notification) => (
           <NotificationMessage
             key={notification.id}
             notification={notification}
-            onRead={() => handleMarkAsRead(dispatch, notification.id)}
+            onRead={() => setNotificationAsRead(dispatch, notification.id)}
           />
         ))}
-        {!hasNotifications && <Alert withoutIcon>You don&apos;t have any notifications</Alert>}
+        {!hasNotifications && tab === 'all' && <Alert withoutIcon>You don&apos;t have any notifications</Alert>}
+        {!hasUnreadNotifications && tab === 'unread' && (
+          <Alert withoutIcon>You don&apos;t have any unread notifications</Alert>
+        )}
       </NotificationsContainer>
     </div>
   );

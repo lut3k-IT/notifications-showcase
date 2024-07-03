@@ -15,7 +15,7 @@ export default function DetailedNotification(props: DetailedNotificationProps) {
   const formattedDate = new Date(timestamp).toLocaleDateString();
 
   return (
-    <Card className={'flex flex-col gap-3'}>
+    <Card className={'flex flex-col gap-3 break-all'}>
       <div className={'flex flex-col gap-3'}>
         <NotificationAvatar notificationType={type} />
         <div>

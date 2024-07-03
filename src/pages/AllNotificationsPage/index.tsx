@@ -1,7 +1,7 @@
 import Alert from '../../components/ui/Alert';
 import NotificationMessage from '../../components/ui/NotificationMessage';
 import NotificationsContainer from '../../components/ui/NotificationsContainer';
-import { handleMarkAsRead } from '../../features/notifications/helpers';
+import { setNotificationAsRead } from '../../features/notifications/helpers';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import useSortedNotifications from '../../hooks/useSortedNotifications';
 
@@ -16,7 +16,7 @@ export default function AllNotificationsPage() {
         <NotificationMessage
           key={notification.id}
           notification={notification}
-          onRead={() => handleMarkAsRead(dispatch, notification.id)}
+          onRead={() => setNotificationAsRead(dispatch, notification.id)}
         />
       ))}
       {!hasNotifications && <Alert withoutIcon>You don&apos;t have any notifications</Alert>}

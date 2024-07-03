@@ -91,7 +91,7 @@ export default function Popover(props: PopoverProps) {
           }}
           style={styles.popper}
           {...attributes.popper}
-          className='animate-fade-in z-40 rounded-lg border border-gray-200 bg-white p-2 shadow-md'
+          className='animate-fade-in z-40 max-w-[100vw] rounded-lg border border-gray-200 bg-white p-2 shadow-md'
           role='tooltip'
         >
           {content}

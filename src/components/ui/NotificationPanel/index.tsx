@@ -26,7 +26,7 @@ export default function NotificationPanel() {
   const notificationsToRender = tab === 'all' ? notifications : unreadNotifications;
 
   return (
-    <div className={'flex w-96 flex-col gap-4 p-2'}>
+    <div className={'flex w-96 max-w-full flex-col gap-4 p-2'}>
       <div className={'flex flex-wrap gap-2'}>
         <TabButton
           isActive={tab === 'all'}

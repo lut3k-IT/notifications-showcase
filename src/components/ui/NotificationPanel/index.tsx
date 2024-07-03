@@ -9,6 +9,7 @@ import AllReadButton from '../AllReadButton';
 import NotificationMessage from '../NotificationMessage';
 import NotificationsContainer from '../NotificationsContainer';
 import TabButton from '../TabButton';
+import UnreadQuantityBadge from '../UnreadQuantityBadge';
 
 export default function NotificationPanel() {
   const [tab, setTab] = useState<NotificationTab>('all');
@@ -27,6 +28,15 @@ export default function NotificationPanel() {
 
   return (
     <div className={'flex w-96 max-w-full flex-col gap-4 p-2'}>
+      <h2 className={'relative w-max'}>
+        Notifications
+        {hasUnreadNotifications && (
+          <UnreadQuantityBadge
+            count={unreadNotifications.length}
+            className={'absolute -right-5 top-0'}
+          />
+        )}
+      </h2>
       <div className={'flex flex-wrap gap-2'}>
         <TabButton
           isActive={tab === 'all'}

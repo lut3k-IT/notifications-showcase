@@ -9,15 +9,17 @@ interface UnreadQuantityBadgeProps {
 
 export default function UnreadQuantityBadge(props: UnreadQuantityBadgeProps) {
   const { count, className } = props;
+  const hasDoubleDigits = count > 9;
 
   return (
     <div
       className={classNames(
-        'flex-center h-4 w-min min-w-4 rounded-full bg-danger-500 text-[0.625rem] text-white',
+        'flex-center h-4 w-4 rounded-full bg-danger-500 text-[0.625rem] tracking-tighter text-white',
+        { '!w-5': hasDoubleDigits },
         className
       )}
     >
-      {count > 9 ? '+9' : count}
+      {hasDoubleDigits ? '9+' : count}
     </div>
   );
 }
